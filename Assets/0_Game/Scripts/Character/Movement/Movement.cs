@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float moveSpeed = 6f;
-    public CharacterController ctrl;
+    public CharacterCtrller ctrl;
     public Vector2 moveInput;
     private void LateUpdate()
     {
@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
     {
         if (ctrl == null)
         {
-            ctrl = transform.parent.GetComponentInChildren<CharacterController>();
+            ctrl = transform.parent.GetComponentInChildren<CharacterCtrller>();
         }
     }
     private void FixedUpdate()

@@ -11,7 +11,7 @@ public class TrampInteract : MonoBehaviour
         var playerGO = collision.transform?.parent.gameObject;
         if (playerGO.tag == "Player")
         {
-            Debug.Log("cc");
+            //Debug.Log("cc");
             var playerRigid = playerGO.GetComponent<Rigidbody2D>();
             playerRigid.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
             GetComponent<Animator>().SetTrigger("Hitted");

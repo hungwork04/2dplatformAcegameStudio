@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CharacterCtrller : MonoBehaviour
 {
     public Movement characterMovement;
     public Health characterHealth;
@@ -25,7 +25,7 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         SelectCharacterManager chaSelected = FindAnyObjectByType<SelectCharacterManager>();
-        GetComponent<SpriteRenderer>().sprite = chaSelected.chas[SelectCharacterManager.chooseIndex].Sprite;
-        ani.runtimeAnimatorController = chaSelected.chas[SelectCharacterManager.chooseIndex].animatorController;
+        GetComponent<SpriteRenderer>().sprite = chaSelected?.chas[SelectCharacterManager.chooseIndex].Sprite;
+        ani.runtimeAnimatorController = chaSelected?.chas[SelectCharacterManager.chooseIndex].animatorController;
     }
 }

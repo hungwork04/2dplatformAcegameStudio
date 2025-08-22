@@ -19,7 +19,7 @@ public class CharacterAttack : MonoBehaviour
         var newBul = PoolManager.instance.Get(PoolManager.instance.bulletpool);
         newBul.transform.position = shootPos.position;
         // bật active
-        CharacterController body = transform.parent.GetComponentInChildren<CharacterController>();
+        CharacterCtrller body = transform.parent.GetComponentInChildren<CharacterCtrller>();
         newBul.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
         newBul.GetComponent<Bullet>().setFlytVector(body.transform.localScale);
         newBul.SetActive(true);

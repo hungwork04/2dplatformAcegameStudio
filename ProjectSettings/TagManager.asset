@@ -43,9 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 3226437787
-    locked: 0
   - name: BG
     uniqueID: 2644362315
     locked: 0
@@ -57,4 +54,7 @@ TagManager:
     locked: 0
   - name: Map
     uniqueID: 1014491065
+    locked: 0
+  - name: UI
+    uniqueID: 3226437787
     locked: 0
