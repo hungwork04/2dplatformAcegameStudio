@@ -18,7 +18,7 @@ public class EnemyHealth : Health
         }
         curHeart -= damage;
     }
-    private void OnDead()
+    protected virtual void OnDead()
     {
         EnemyMovement move = GetComponent<EnemyMovement>();
         move.StopAllCoroutines();
@@ -26,7 +26,7 @@ public class EnemyHealth : Health
         move.ani.Play("Enemy_Hitted");
         StartCoroutine(WaitBeforeDisable(0.2f));
     }
-    IEnumerator WaitBeforeDisable(float time)
+    public IEnumerator WaitBeforeDisable(float time)
     {
         yield return new WaitForSeconds(time);
         transform.gameObject.SetActive(false);

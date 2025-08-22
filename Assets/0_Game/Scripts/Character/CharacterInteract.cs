@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterInteract : MonoBehaviour
@@ -8,9 +9,10 @@ public class CharacterInteract : MonoBehaviour
     [SerializeField]private int InteractablelayerIndex;
     [SerializeField]private int EnemylayerIndex;
     [SerializeField]private string DamageableTag;
-
+    CharacterCtrller ctrl;
     private void Awake()
     {
+        ctrl= GetComponent<CharacterCtrller>();
         EatablelayerIndex = LayerMask.NameToLayer("EatableItem");
         InteractablelayerIndex = LayerMask.NameToLayer("InteractableItem");
         EnemylayerIndex = LayerMask.NameToLayer("Enemy");
@@ -27,6 +29,21 @@ public class CharacterInteract : MonoBehaviour
         {
             var refer = collisionGO.GetComponent<IInteract>();
             refer.Interact();
+
+            var hit = Physics2D.Raycast(collisionGO.transform.position, Vector2.up, 30, EnemylayerIndex);
+            Debug.DrawRay(collisionGO.transform.position, Vector2.up * 30, Color.red);
+            if (hit.collider == null) return;
+            var EnenmyGO = hit.collider.transform.parent.gameObject;
+            Debug.Log(EnenmyGO.name);
+            if (EnenmyGO.layer == EnemylayerIndex)
+            {
+                if (EnenmyGO.GetComponent<EnemyMovement>() != null)
+                {
+                    EnenmyGO.GetComponent<EnemyMovement>().IsHitted = true;
+                }
+                EnenmyGO.GetComponent<Animator>().Play("Enemy_Hitted");
+                EnenmyGO.GetComponent<EnemyHealth>().TakeDamage(2);
+            }
         }
         else if (collisionGO.CompareTag(DamageableTag))
         {
@@ -40,9 +57,11 @@ public class CharacterInteract : MonoBehaviour
         if (collisionGO.layer == EnemylayerIndex)
         {
             GetComponent<Animator>().SetTrigger("IsHitted");
-            StartCoroutine(IgnoreColliderTemp(collision.collider));
+
         }
     }
+
+
     IEnumerator IgnoreColliderTemp(Collider2D other)
     {
         Collider2D mycol = this.GetComponent<Collider2D>();

@@ -8,5 +8,7 @@ public class InteractItem : MonoBehaviour, IInteract
     {
         Animator ani = GetComponent<Animator>();
         ani.SetTrigger("Hitted");
+
+       
     }
 }

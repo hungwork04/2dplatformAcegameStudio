@@ -21,8 +21,8 @@ public class CharacterAttack : MonoBehaviour
         // bật active
         CharacterCtrller body = transform.parent.GetComponentInChildren<CharacterCtrller>();
         newBul.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
-        newBul.GetComponent<Bullet>().setFlytVector(body.transform.localScale);
         newBul.SetActive(true);
+        newBul.GetComponent<Bullet>().setFlytVector(body.transform.localScale);
 
     }
 }

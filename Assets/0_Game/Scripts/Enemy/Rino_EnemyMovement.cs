@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Rino_EnemyMovement : EnemyMovement
 {
@@ -39,7 +40,11 @@ public class Rino_EnemyMovement : EnemyMovement
             ani.Play("Enemy_HitWall");
             DelayRedo(500, () =>
             {
-                tween.Play();
+                tween.Kill();
+                EneFlip();
+                if (curPos == PosA)
+                    MoveLoop(PosB);
+                else MoveLoop(PosA);
             });
 
         }

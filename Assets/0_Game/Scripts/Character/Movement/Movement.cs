@@ -5,25 +5,30 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 6f;
-    [SerializeField] private float moveSpeed = 6f;
+    public float jumpForce = 6f;
+    public float moveSpeed = 6f;
+    public float originSpeed;
     public CharacterCtrller ctrl;
     public Vector2 moveInput;
+    private void Start()
+    {
+        originSpeed = moveSpeed;
+    }
     private void LateUpdate()
     {
-        //moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+
+        ctrl.ani.SetFloat("yVelocity", ctrl.rb.velocity.y);
+        if (ctrl.rb.velocity.y < -0.1f)
+        {
+            ctrl.state.airState = CharacterState.AIR_STATE.FALL;
+        }
+
         if (ctrl.state.airState != CharacterState.AIR_STATE.NONE)// 
         {
             ctrl.ani.SetBool("IsDoubleJump", ctrl.state.airState == CharacterState.AIR_STATE.DOUBLE_JUMP);
         }
-        //if (ctrl.rb.velocity.y!=0)// sai logic chạy về và chưa kịp check 0 
-        //{
-            ctrl.ani.SetFloat("yVelocity", ctrl.rb.velocity.y);
-            if (ctrl.rb.velocity.y < -0.1f)
-            {
-                ctrl.state.airState = CharacterState.AIR_STATE.FALL;
-            }
-        //}
+
         ctrl.ani.SetFloat("xVelocity", Mathf.Abs(moveInput.x));
 
         Flip();
@@ -52,7 +57,6 @@ public class Movement : MonoBehaviour
         CharacterState thisState = ctrl.state;
         if (!thisState.CanJump && !thisState.CanDoubleJump)
             return;
-        //if (thisState.CanJump|| thisState.CanDoubleJump)
 
         ctrl.rb.velocity = new Vector2(ctrl.rb.velocity.x, jumpForce);
         if (thisState.CanJump)

@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float EneTime = 3f;
-    [SerializeField] private float stopTime = 0.5f;
+    [SerializeField] protected float EneTime = 3f;
+    [SerializeField] protected float stopTime = 0.5f;
     public Transform PosA;
     public Transform PosB;
+    public Transform curPos;
     public Animator ani;
 
     public bool IsHitted =false;
@@ -22,8 +23,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (IsHitted)
         {
-            ani.Play("Enemy_Hitted");
-            tween.Pause();
+            //ani.Play("Enemy_Hitted");
+            tween?.Pause();
             IsHitted=false;
         }
     }
@@ -32,8 +33,9 @@ public class EnemyMovement : MonoBehaviour
         float newX = transform.localScale.x * -1;
         transform.localScale = new Vector3(newX, transform.localScale.y, transform.localScale.z);
     }
-    public void MoveLoop(Transform Pos)
+    public virtual void MoveLoop(Transform Pos)
     {
+        curPos = Pos;
         ani.Play("Enemy_Run");
         tween= transform.DOMove(Pos.position, EneTime).SetEase(Ease.Linear).OnComplete(() =>
         {

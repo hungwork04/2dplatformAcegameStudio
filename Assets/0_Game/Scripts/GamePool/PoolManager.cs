@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoolManager : ObjectPool
 {
     public Pool bulletpool;
+    public Pool Plant_bulletpool;
     public static PoolManager instance;
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class PoolManager : ObjectPool
     {
 
         pools.Add(bulletpool.GetHashCode(), bulletpool);
+        pools.Add(Plant_bulletpool.GetHashCode(), Plant_bulletpool);
         base.Start();
     }
 

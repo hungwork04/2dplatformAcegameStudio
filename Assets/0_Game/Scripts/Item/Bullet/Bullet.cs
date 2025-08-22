@@ -13,10 +13,7 @@ public class Bullet : MonoBehaviour
         if (bulletRb == null)
             bulletRb= GetComponent<Rigidbody2D>();
     }
-    private void Start()
-    {
-        bulletRb.velocity = thisVec * flySpeed;
-    }
+
     public void setFlytVector(Vector3 bodyvec)
     {
         if (bodyvec.x > 0)
@@ -24,5 +21,7 @@ public class Bullet : MonoBehaviour
             thisVec=  Vector3.right;
         }
         else thisVec = Vector3.left;
+        bulletRb.velocity = thisVec * flySpeed;
+
     }
 }
