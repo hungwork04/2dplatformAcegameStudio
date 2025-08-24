@@ -22,19 +22,31 @@ public class FatBird_Area : MonoBehaviour
             fatbirdMove.tween.Kill();
             fatbirdMove.tween= transform.parent.DOMove(PlayerCollision.position, 1f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                transform.parent.DOMove(fatbirdMove.curPos.position, 1f).SetEase(Ease.Linear);
-                StartCoroutine(wait(1));
+                GetComponentInParent<Animator>().SetTrigger("IsGrounded");
+                transform.parent.DOMove(fatbirdMove.curPos.position, 3f).SetEase(Ease.Linear).OnComplete(()=>{
+                    if(gameObject.activeInHierarchy)
+                    StartCoroutine(wait(1));
+                });
             });
+            GetComponentInParent<Animator>().SetTrigger("IsFall");
+
         }
     }
+    
     public IEnumerator wait(float stopTime)
     {
         yield return new WaitForSeconds(stopTime);
+        GetComponentInParent<Animator>().Play("Enemy_Fly");
         if (fatbirdMove.curPos == fatbirdMove.PosA)
             fatbirdMove.MoveLoop(fatbirdMove.PosB);
         else fatbirdMove.MoveLoop(fatbirdMove.PosA);
         target = null;
 
         //re - optimize
+    }
+    private void OnDisable()
+    {
+        fatbirdMove.tween.Kill();
+        StopAllCoroutines();
     }
 }

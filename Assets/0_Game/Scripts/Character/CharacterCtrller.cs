@@ -11,21 +11,22 @@ public class CharacterCtrller : MonoBehaviour
     public CharacterState state;
     private void Awake()
     {
+        var parentTrans = transform.parent;
         if(characterMovement==null)
-            characterMovement = transform.parent.GetComponentInChildren<Movement>();
+            characterMovement = parentTrans.GetComponentInChildren<Movement>();
         if(characterHealth==null)
-            characterHealth = transform.parent.GetComponentInChildren<Health>();
+            characterHealth = parentTrans.GetComponentInChildren<Health>();
         if(ani==null)
             ani= GetComponent<Animator>();
         if (rb == null)
             rb = GetComponentInParent<Rigidbody2D>();
         if(state==null)
-            state = GetComponent<CharacterState>();
+            state = parentTrans.GetComponentInChildren<CharacterState>();
     }
     private void Start()
     {
-        SelectCharacterManager chaSelected = FindAnyObjectByType<SelectCharacterManager>();
-        GetComponent<SpriteRenderer>().sprite = chaSelected?.chas[SelectCharacterManager.chooseIndex].Sprite;
-        ani.runtimeAnimatorController = chaSelected?.chas[SelectCharacterManager.chooseIndex].animatorController;
+        GetComponent<SpriteRenderer>().sprite = PlayerManager.player.Sprite;
+        ani.runtimeAnimatorController = PlayerManager.player.animatorController;
     }
+
 }

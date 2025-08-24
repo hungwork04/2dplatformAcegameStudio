@@ -14,6 +14,12 @@ public class Movement : MonoBehaviour
     {
         originSpeed = moveSpeed;
     }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Jump();
+        }
+    }
     private void LateUpdate()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");

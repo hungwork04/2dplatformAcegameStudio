@@ -12,8 +12,10 @@ public class TrapInteract : MonoBehaviour
 
         if (player.CompareTag("Player"))
         {
-            player.transform.position =GameManager.instance.StartPoint.position;
-            Debug.Log(collision.collider.gameObject.name);
+            //player.transform.position =GameManager.instance.StartPoint.position;
+            player.SetActive(false);
+            ObserverManager.OnPlayerDead?.Invoke("LOSE");
+            //Debug.Log(collision.collider.gameObject.name);
         }
     }
 }

@@ -57,5 +57,9 @@ public class EnemyMovement : MonoBehaviour
         tween.Play();
         ani.Play("Enemy_Run");
     }
-
+    void OnDisable()
+    {
+        tween.Kill();
+        StopAllCoroutines();
+    }
 }

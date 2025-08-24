@@ -7,4 +7,5 @@ public class ObserverManager : MonoBehaviour
 {
     public static Action OnUpdateScore;
     public static Action OnChooseLevel;
+    public static Action<string> OnPlayerDead;
 }

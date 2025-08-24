@@ -7,22 +7,35 @@ using UnityEngine.UI;
 
 public class SelectCharacterManager : MonoBehaviour
 {
-    [Serializable]
-    public class CharacterInfor
-    {
-        public string name;
-        [SerializeField] public RuntimeAnimatorController animatorController;//?
-        public Sprite Sprite;
-    }
-    public List<CharacterInfor> chas = new List<CharacterInfor>();
+
+    public List<PlayerManager.CharacterInfor> chas = new List<PlayerManager.CharacterInfor>();
+    [Space]
+    [Header("Select Character UI")]
     public Image ava;
-    public static int chooseIndex = 0;
+    public int chooseIndex ;
     public GameObject selectPanel;
+    //public static SelectCharacterManager Instance;
+    // private void Awake()
+    // {
+    //     // Nếu đã có instance khác tồn tại thì hủy cái mới
+    //     if (Instance != null && Instance != this)
+    //     {
+    //         Destroy(gameObject);
+    //         return;
+    //     }
+
+    //     // Gán instance
+    //     Instance = this;
+
+    //     // Giữ lại qua các scene
+    //     DontDestroyOnLoad(gameObject);
+    // }
     private void Start()
     {
-        DontDestroyOnLoad(this);  
         chooseIndex = 0;
         ava.sprite = chas[chooseIndex].Sprite;
+        PlayerManager.player.animatorController = chas[chooseIndex].animatorController;
+        PlayerManager.player.Sprite = chas[chooseIndex].Sprite;
     }
     public void SwitchCharacter()
     {
@@ -35,6 +48,8 @@ public class SelectCharacterManager : MonoBehaviour
     }
     public void SelectCharacter()
     {
+        PlayerManager.player.animatorController = chas[chooseIndex].animatorController;
+        PlayerManager.player.Sprite = chas[chooseIndex].Sprite;
         selectPanel.SetActive(false);
     }
     public void TurnOnSelectPanel()

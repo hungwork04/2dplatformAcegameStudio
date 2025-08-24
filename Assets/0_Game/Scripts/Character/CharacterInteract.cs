@@ -8,7 +8,6 @@ public class CharacterInteract : MonoBehaviour
     [SerializeField]private int EatablelayerIndex;
     [SerializeField]private int InteractablelayerIndex;
     [SerializeField]private int EnemylayerIndex;
-    [SerializeField]private string DamageableTag;
     CharacterCtrller ctrl;
     private void Awake()
     {
@@ -16,7 +15,6 @@ public class CharacterInteract : MonoBehaviour
         EatablelayerIndex = LayerMask.NameToLayer("EatableItem");
         InteractablelayerIndex = LayerMask.NameToLayer("InteractableItem");
         EnemylayerIndex = LayerMask.NameToLayer("Enemy");
-        DamageableTag = "Damagable";
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +32,6 @@ public class CharacterInteract : MonoBehaviour
             Debug.DrawRay(collisionGO.transform.position, Vector2.up * 30, Color.red);
             if (hit.collider == null) return;
             var EnenmyGO = hit.collider.transform.parent.gameObject;
-            Debug.Log(EnenmyGO.name);
             if (EnenmyGO.layer == EnemylayerIndex)
             {
                 if (EnenmyGO.GetComponent<EnemyMovement>() != null)
@@ -42,13 +39,15 @@ public class CharacterInteract : MonoBehaviour
                     EnenmyGO.GetComponent<EnemyMovement>().IsHitted = true;
                 }
                 EnenmyGO.GetComponent<Animator>().Play("Enemy_Hitted");
+                Debug.Log(EnenmyGO.name);
+
                 EnenmyGO.GetComponent<EnemyHealth>().TakeDamage(2);
             }
         }
-        else if (collisionGO.CompareTag(DamageableTag))
-        {
-            collisionGO.GetComponentInParent<EnemyHealth>().TakeDamage(2);
-        }
+        // if (collisionGO.CompareTag(DamageableTag))
+        // {
+        //     collisionGO.GetComponentInParent<EnemyHealth>().TakeDamage(2);
+        // }
 
     }
     private void OnCollisionEnter2D(Collision2D collision)

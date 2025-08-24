@@ -10,6 +10,7 @@ public class Plant_EnemyInteract : EnemyInteract
         if (PlayerCollision.CompareTag("Player"))
         {
             this.GetComponentInParent<Animator>().Play("Enemy_Hitted");
+            GetComponentInParent<EnemyHealth>().TakeDamage(2);
         }
     }
 }
