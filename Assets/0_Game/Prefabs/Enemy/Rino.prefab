@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7782b6e71fc791442bacac816dd900e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHeart: 10
   curHeart: 0
 --- !u!95 &965253480897689735
 Animator:
@@ -139,6 +140,7 @@ MonoBehaviour:
   stopTime: 0.5
   PosA: {fileID: 0}
   PosB: {fileID: 0}
+  curPos: {fileID: 0}
   ani: {fileID: 965253480897689735}
   IsHitted: 0
 --- !u!70 &964563250127381581

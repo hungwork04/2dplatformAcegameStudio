@@ -14,16 +14,20 @@ public class Movement : MonoBehaviour
     {
         originSpeed = moveSpeed;
     }
+#if UNITY_EDITOR
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             Jump();
         }
     }
+#endif
     private void LateUpdate()
     {
+#if UNITY_EDITOR
         moveInput.x = Input.GetAxisRaw("Horizontal");
-
+#endif
         ctrl.ani.SetFloat("yVelocity", ctrl.rb.velocity.y);
         if (ctrl.rb.velocity.y < -0.1f)
         {

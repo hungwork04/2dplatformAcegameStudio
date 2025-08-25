@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -821819637
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayer: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   ani: {fileID: 6497738973955120413}
   rb: {fileID: 5708635789009177066}
   state: {fileID: 0}
+  originLocalscale: {x: 0, y: 0, z: 0}
 --- !u!114 &9012599682852049917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 2183484202319953745}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.18, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -315,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2efcffe84b157e4d96eae247b174ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHeart: 10
   curHeart: 0
 --- !u!1 &7363567879245054015
 GameObject:
@@ -364,6 +366,8 @@ MonoBehaviour:
   bullet: {fileID: 1177005990233604928, guid: 85184bb7e47789f4fa4f98b7938cf90e, type: 3}
   shootPos: {fileID: 3030588394621393139}
   bulletScale: 0.35
+  isWaiting: 0
+  CoolDownTime: 0.25
 --- !u!1 &7613199395113181178
 GameObject:
   m_ObjectHideFlags: 0

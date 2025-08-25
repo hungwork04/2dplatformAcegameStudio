@@ -14,25 +14,10 @@ public class SelectCharacterManager : MonoBehaviour
     public Image ava;
     public int chooseIndex ;
     public GameObject selectPanel;
-    //public static SelectCharacterManager Instance;
-    // private void Awake()
-    // {
-    //     // Nếu đã có instance khác tồn tại thì hủy cái mới
-    //     if (Instance != null && Instance != this)
-    //     {
-    //         Destroy(gameObject);
-    //         return;
-    //     }
 
-    //     // Gán instance
-    //     Instance = this;
-
-    //     // Giữ lại qua các scene
-    //     DontDestroyOnLoad(gameObject);
-    // }
     private void Start()
     {
-        chooseIndex = 0;
+        chooseIndex = DataController.SelectedSkin;
         ava.sprite = chas[chooseIndex].Sprite;
         PlayerManager.player.animatorController = chas[chooseIndex].animatorController;
         PlayerManager.player.Sprite = chas[chooseIndex].Sprite;
@@ -50,6 +35,7 @@ public class SelectCharacterManager : MonoBehaviour
     {
         PlayerManager.player.animatorController = chas[chooseIndex].animatorController;
         PlayerManager.player.Sprite = chas[chooseIndex].Sprite;
+        DataController.SelectedSkin = chooseIndex;
         selectPanel.SetActive(false);
     }
     public void TurnOnSelectPanel()

@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
-    [SerializeField] protected override int maxHeart { get; } =5;
 
     public override void TakeDamage(int damage)
     {
         if (curHeart <= damage)
         {
             curHeart = 0;
-            Debug.Log(this.transform.parent?.gameObject + " - DEAD");
+            //Debug.Log(this.transform.parent?.gameObject + " - DEAD");
             OnDead();
             return;
         }

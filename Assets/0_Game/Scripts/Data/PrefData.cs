@@ -121,6 +121,32 @@ public class PrefData : MonoBehaviour
 		get => PlayerPrefs.GetInt("language", -1);
 		set => PlayerPrefs.SetInt("language", value);
 	}
-	
-	#endregion 
+
+    #endregion
+
+    #region PLAYER INFO
+
+	public static int Money
+	{
+        get => PlayerPrefs.GetInt("money", 0);
+        set => PlayerPrefs.SetInt("money", value);
+    }
+
+    public static int HighScore
+    {
+        get => PlayerPrefs.GetInt("high_score", 0);
+        set => PlayerPrefs.SetInt("high_score", value);
+    }
+
+    public static int SelectedSkin
+    {
+        get => PlayerPrefs.GetInt("selected_skin", 0);
+        set => PlayerPrefs.SetInt("selected_skin", value);
+    }
+    public static int Level
+    {
+        get => PlayerPrefs.GetInt("Level", 0);
+        set => PlayerPrefs.SetInt("Level", value);
+    }
+    #endregion
 }

@@ -7,7 +7,7 @@ public class EatItem : MonoBehaviour,IEatable
     public virtual void Eat()
     {
         Debug.Log(this.gameObject.name);
-        this.gameObject.SetActive(false);
         ObserverManager.OnUpdateScore?.Invoke();
+        this.gameObject.SetActive(false);
     }
 }

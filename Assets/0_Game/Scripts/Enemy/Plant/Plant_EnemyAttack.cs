@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -62,6 +63,8 @@ public class Plant_EnemyAttack : EnemyAttack
             var originSpeed = characterCtrller.characterMovement.originSpeed;
             characterCtrller.characterMovement.moveSpeed = originSpeed;
         }
+        StopAllCoroutines();
 
     }
+    
 }

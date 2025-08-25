@@ -6,6 +6,6 @@ PhysicsMaterial2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground
-  friction: 0.13
-  bounciness: 0
+  m_Name: Player_Bullet
+  friction: 0.12
+  bounciness: 0.45

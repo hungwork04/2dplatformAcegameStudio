@@ -6,7 +6,8 @@ public class Apple : EatItem
 {
     public override void Eat()
     {
-        GameManager.instance.Level += 1;
+        //GameManager.instance.Level += 1;
+        DataController.HighScore += 1;
         base.Eat();
     }
 

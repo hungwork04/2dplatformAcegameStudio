@@ -12,7 +12,7 @@ public class Plant_Bullet : Bullet
         //Debug.Log(this.transform.gam);
         if (GO.transform.parent.tag=="Player"|| GO.tag == "Ground")
         {
-            Debug.Log(GO.name);
+            //Debug.Log(GO.name);
 
             var playerCtrl = GO.GetComponentInParent<CharacterCtrller>();
             Debug.Log(playerCtrl);

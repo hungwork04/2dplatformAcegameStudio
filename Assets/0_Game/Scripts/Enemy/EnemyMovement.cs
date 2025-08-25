@@ -15,11 +15,11 @@ public class EnemyMovement : MonoBehaviour
 
     public bool IsHitted =false;
     public Tween tween;
-    private void Start()
+    protected virtual void Start()
     {
         MoveLoop(PosB);
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (IsHitted)
         {
@@ -59,7 +59,11 @@ public class EnemyMovement : MonoBehaviour
     }
     void OnDisable()
     {
-        tween.Kill();
+        tween?.Kill();
         StopAllCoroutines();
+    }
+    private void OnDestroy()
+    {
+        DOTween.Kill(gameObject); 
     }
 }

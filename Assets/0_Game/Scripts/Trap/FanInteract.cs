@@ -15,7 +15,7 @@ public class FanInteract : MonoBehaviour
         {
             var playerRigid = playerGO.GetComponent<Rigidbody2D>();
             playerRigid.gravityScale = 0.3f;
-            playerRigid.AddForce(Vector2.up * 7.5f,ForceMode2D.Impulse);
+            playerRigid.AddForce(Vector2.up * 3.5f,ForceMode2D.Impulse);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

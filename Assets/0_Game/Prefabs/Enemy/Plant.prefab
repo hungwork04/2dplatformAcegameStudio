@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8150162250133774735}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShootingPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2920124085553299619}
   - component: {fileID: 8154718208733240943}
   - component: {fileID: 3150124576478757835}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlantCheckCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -821819637
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7059297670216363161, guid: 326dd6eeaa0ca144ca01194dbacf63fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b52e211999f1448c5680145866048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHeart: 4
   curHeart: 0
 --- !u!114 &9157227486951731528
 MonoBehaviour:

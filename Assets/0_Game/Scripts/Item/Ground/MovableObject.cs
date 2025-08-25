@@ -27,6 +27,7 @@ public class MovableObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.transform.rotation = Quaternion.identity;
             collision.transform.SetParent(null);
         }
     }

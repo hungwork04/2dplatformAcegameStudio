@@ -30,14 +30,24 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
     }
+    bool isSeperate ;
+    private void OnEnable()
+    {
+        isSeperate = false;
+    }
     private void Update()
     {
         if (player.transform.position.y< -7)
         {
            // Debug.LogWarning("Check");
-            //player.transform.position = StartPoint.position;
             player.SetActive(false);
-            ObserverManager.OnPlayerDead?.Invoke("LOSE");
+            if (!isSeperate)
+            {
+                DataController.Money = Mathf.FloorToInt(0.7f * DataController.Money);
+                Debug.Log(DataController.Money);
+                isSeperate = true;
+            }
+            ObserverManager.OnPlayerEndGame?.Invoke("LOSE");
         }
     }
     public void ExitToMenu()

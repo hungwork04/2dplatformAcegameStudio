@@ -12,9 +12,10 @@ public class TrapInteract : MonoBehaviour
 
         if (player.CompareTag("Player"))
         {
-            //player.transform.position =GameManager.instance.StartPoint.position;
             player.SetActive(false);
-            ObserverManager.OnPlayerDead?.Invoke("LOSE");
+            DataController.Money =Mathf.FloorToInt(0.7f * DataController.Money);
+            Debug.Log(DataController.Money);
+            ObserverManager.OnPlayerEndGame?.Invoke("LOSE");
             //Debug.Log(collision.collider.gameObject.name);
         }
     }

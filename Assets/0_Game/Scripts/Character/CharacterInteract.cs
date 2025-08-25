@@ -43,11 +43,11 @@ public class CharacterInteract : MonoBehaviour
 
                 EnenmyGO.GetComponent<EnemyHealth>().TakeDamage(2);
             }
+        } else if (collision.gameObject.CompareTag("CUP"))
+        {
+            ObserverManager.OnPlayerEndGame?.Invoke("WIN");
         }
-        // if (collisionGO.CompareTag(DamageableTag))
-        // {
-        //     collisionGO.GetComponentInParent<EnemyHealth>().TakeDamage(2);
-        // }
+
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,7 +56,7 @@ public class CharacterInteract : MonoBehaviour
         if (collisionGO.layer == EnemylayerIndex)
         {
             GetComponent<Animator>().SetTrigger("IsHitted");
-
+            transform.parent.GetComponentInChildren<CharacterHealth>().TakeDamage(1);
         }
     }
 

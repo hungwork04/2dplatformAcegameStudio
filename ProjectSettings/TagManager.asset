@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Damagable
+  - CUP
   layers:
   - Default
   - TransparentFX
@@ -49,11 +50,11 @@ TagManager:
   - name: Bullet
     uniqueID: 2740105255
     locked: 0
-  - name: Character
-    uniqueID: 3473147659
-    locked: 0
   - name: Map
     uniqueID: 1014491065
+    locked: 0
+  - name: Character
+    uniqueID: 3473147659
     locked: 0
   - name: UI
     uniqueID: 3226437787

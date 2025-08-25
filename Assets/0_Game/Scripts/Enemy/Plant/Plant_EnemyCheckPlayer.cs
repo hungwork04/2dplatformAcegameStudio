@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Plant_EnemyCheckPlayer : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         var player = collision?.transform.parent.gameObject;
 
         if (player.tag == "Player")
         {
+            //Debug.Log("start");
             InvokeRepeating("repeataction", 0.2f, 1);
         }
     }
@@ -20,6 +21,7 @@ public class Plant_EnemyCheckPlayer : MonoBehaviour
 
         if (player.tag == "Player")
         {
+            //Debug.Log("End");
             CancelInvoke("repeataction");
         }
     }

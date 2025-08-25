@@ -6,7 +6,8 @@ public class Bananas : EatItem
 {
     public override void Eat()
     {
-        GameManager.instance.Money += 10;
+        //GameManager.instance.Money += 10;
+        DataController.HighScore += 2;
         base.Eat();
     }
 

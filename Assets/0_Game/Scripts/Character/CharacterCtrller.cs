@@ -9,6 +9,9 @@ public class CharacterCtrller : MonoBehaviour
     public Animator ani;
     public Rigidbody2D rb;
     public CharacterState state;
+    public Vector3 originLocalscale;
+    public float originMovespeed;
+    public float originJumpForce;
     private void Awake()
     {
         var parentTrans = transform.parent;
@@ -27,6 +30,34 @@ public class CharacterCtrller : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = PlayerManager.player.Sprite;
         ani.runtimeAnimatorController = PlayerManager.player.animatorController;
+        originLocalscale = transform.parent.localScale;
+        originJumpForce = characterMovement.jumpForce;
+        originMovespeed = characterMovement.moveSpeed;
+        OnUpdateCharacterScaleByMoney();
+    }
+    private void OnEnable()
+    {
+        ObserverManager.OnUpdateScore += OnUpdateCharacterScaleByMoney;
+    }
+    private void OnDisable()
+    {
+        ObserverManager.OnUpdateScore -= OnUpdateCharacterScaleByMoney;
+    }
+    public void OnUpdateCharacterScaleByMoney()
+    {
+
+        int dex = (int)(DataController.Money / 10);
+        float scale = 1f + dex * 0.15f;
+
+        scale = Mathf.Min(scale, 1.5f);
+        transform.parent.localScale = new Vector3(
+            originLocalscale.x * scale,
+            originLocalscale.y * scale,
+            originLocalscale.z * scale
+        );
+        characterMovement.jumpForce  = Mathf.Min(originJumpForce * scale,6*1.5f);
+        characterMovement.moveSpeed  = Mathf.Min(originMovespeed * scale, 6 * 1.5f);
+
     }
 
 }

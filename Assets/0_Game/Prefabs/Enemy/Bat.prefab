@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7782b6e71fc791442bacac816dd900e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHeart: 1
   curHeart: 0
 --- !u!114 &6278392533343231128
 MonoBehaviour:
@@ -250,6 +251,7 @@ MonoBehaviour:
   stopTime: 0.5
   PosA: {fileID: 0}
   PosB: {fileID: 0}
+  curPos: {fileID: 0}
   ani: {fileID: 5788251076938332468}
   IsHitted: 0
 --- !u!58 &3038167363172838531

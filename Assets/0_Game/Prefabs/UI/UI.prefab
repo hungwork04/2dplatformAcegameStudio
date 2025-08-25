@@ -1574,7 +1574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2062828464988991858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1864,7 +1864,7 @@ MonoBehaviour:
   TimeTxt: {fileID: 8724727284209007175}
   LevelTxt: {fileID: 1854393427674849886}
   MoneyTxt: {fileID: 2891809542112350495}
-  EndgamePanel: {fileID: 4271913630649648895}
+  EndgamePanel: {fileID: 2062828464988991858}
   ResultTxt: {fileID: 6756195901570461875}
 --- !u!1 &6189809726643569057
 GameObject:

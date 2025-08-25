@@ -85,12 +85,55 @@ public class DataController : MonoBehaviour
 		}
 	}
 
-	#endregion
+    #endregion
 
-	#region CACHE
+    #region PLAYER INFOR
+    public static int Money
+    {
+        get => _money;
+        set
+        {
+            _money = value;
+            PrefData.Money = value;
+        }
+    }
 
-	//USER
-	private static int _userMoney;
+    public static int HighScore
+    {
+        get => _highscore;
+        set
+        {
+            _highscore = value;
+            PrefData.HighScore = value;
+        }
+    }
+
+    public static int SelectedSkin
+    {
+        get => _selectedskin;
+        set
+        {
+            _selectedskin = value;
+            PrefData.SelectedSkin = value;
+        }
+    }
+
+    public static int Level
+    {
+        get => _level;
+        set
+        {
+            _level = value;
+            PrefData.Level = value;
+        }
+    }
+    #endregion
+
+
+    #region CACHE
+
+    //USER
+    private static int _userMoney;
 	private static int _userLevel;
 	private static int _userRound;
 	private static int _userSkin;
@@ -100,19 +143,45 @@ public class DataController : MonoBehaviour
 	private static bool _settingMusic;
 	private static bool _settingSFX;
 	private static bool _settingVibrate;
+
+	//PLAYER INFOR
+	private static int _money;
+	private static int _highscore;
+	private static int _selectedskin;
+	private static int _level;
 	#endregion
 
 	private void Awake()
 	{
-		Instance = this;
-		_userMoney = PrefData.UserMoney;
+		if (Instance != null && Instance!= this)
+		{
+            Destroy(gameObject);
+        }
+        Instance = this;
+		DontDestroyOnLoad(gameObject);
+
+        _userMoney = PrefData.UserMoney;
 		_userLevel = PrefData.UserLevel;
 
 		_settingMusic = PrefData.SettingMusic;
 		_settingSFX = PrefData.SettingSFX;
 		_settingVibrate = PrefData.SettingVibrate;
+
+
+		_money = PrefData.Money;
+		_highscore = PrefData.HighScore;
+		_selectedskin = PrefData.SelectedSkin;
+		_level = PrefData.Level;
 	}
-	
+	private void Start()
+	{
+		PrefData.Money = 0;
+		_money = 20;
+		PrefData.HighScore = 0;
+		_highscore = 0;
+		PrefData.SelectedSkin = 0;
+		PrefData.Level = 0;
+	}
 #if UNITY_IOS
     public void ATT()
     {

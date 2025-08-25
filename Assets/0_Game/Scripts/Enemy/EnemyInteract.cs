@@ -9,7 +9,7 @@ public class EnemyInteract : MonoBehaviour
         var PlayerCollision = collision.transform.parent;
         if (PlayerCollision.CompareTag("Player"))
         {
-            Debug.Log(collision.gameObject);
+            //Debug.Log(collision.gameObject);
             this.GetComponentInParent<EnemyMovement>().IsHitted = true;
             this.GetComponentInParent<Animator>().Play("Enemy_Hitted");
             GetComponentInParent<EnemyHealth>().TakeDamage(2);
